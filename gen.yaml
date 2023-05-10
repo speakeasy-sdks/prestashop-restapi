@@ -1,14 +1,15 @@
 configVersion: 1.0.0
+management:
+  docChecksum: 63f577c042abca90d6ed263f39ef4e5e
+  docVersion: 1.0.0
+  speakeasyVersion: 1.29.3
+  generationVersion: 2.26.3
 generation:
-  comments:
-    disableComments: false
-    omitDescriptionIfSummaryPresent: false
-  baseServerURL: ""
+  telemetryEnabled: false
   sdkClassName: Binshops
   singleTagPerOp: false
-  tagNamespacingDisabled: false
-  telemetryEnabled: false
 typescript:
-  version: 0.0.1
+  version: 1.0.0
   author: performingdigital
+  maxMethodParams: 0
   packageName: prestashop-restapi
