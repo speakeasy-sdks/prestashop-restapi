@@ -6,33 +6,29 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class GetRestWishlistRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=action",
-  })
-  action?: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=action" })
+    action?: string;
 
-  /**
-   * required
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=idWishList",
-  })
-  idWishList?: number;
+    /**
+     * required
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=idWishList" })
+    idWishList?: number;
 
-  /**
-   * required
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=name" })
-  name?: string;
+    /**
+     * required
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=name" })
+    name?: string;
 }
 
 export class GetRestWishlistResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

@@ -25,14 +25,14 @@ export const ServerList = ["http://{{website_url}}"] as const;
  * The available configuration options for the SDK
  */
 export type SDKProps = {
-  /**
-   * Allows overriding the default axios client used by the SDK
-   */
-  defaultClient?: AxiosInstance;
-  /**
-   * Allows overriding the default server URL used by the SDK
-   */
-  serverURL?: string;
+    /**
+     * Allows overriding the default axios client used by the SDK
+     */
+    defaultClient?: AxiosInstance;
+    /**
+     * Allows overriding the default server URL used by the SDK
+     */
+    serverURL?: string;
 };
 
 /**
@@ -45,139 +45,138 @@ export type SDKProps = {
  * ### [https://addons.prestashop.com/en/website-performance/52062-rest-api-pro-version-with-fast-api-caching.html](https://addons.prestashop.com/en/website-performance/52062-rest-api-pro-version-with-fast-api-caching.html#overview)
  */
 export class Binshops {
-  public address: Address;
-  /**
-   * This Section contains authentication REST endpoints
-   */
-  public authentication: Authentication;
-  public cart: Cart;
-  public checkout: Checkout;
-  public checkoutGreaterThanPayments: CheckoutGreaterThanPayments;
-  public newsletterSubscription: NewsletterSubscription;
-  /**
-   * REST endpoints related to products
-   */
-  public products: Products;
-  /**
-   * REST endpoints related to user profile section
-   */
-  public profileAccount: ProfileAccount;
-  public profileAccountGreaterThanOrder: ProfileAccountGreaterThanOrder;
-  public wishlist: Wishlist;
-  public default: Default;
+    public address: Address;
+    /**
+     * This Section contains authentication REST endpoints
+     */
+    public authentication: Authentication;
+    public cart: Cart;
+    public checkout: Checkout;
+    public checkoutGreaterThanPayments: CheckoutGreaterThanPayments;
+    public newsletterSubscription: NewsletterSubscription;
+    /**
+     * REST endpoints related to products
+     */
+    public products: Products;
+    /**
+     * REST endpoints related to user profile section
+     */
+    public profileAccount: ProfileAccount;
+    public profileAccountGreaterThanOrder: ProfileAccountGreaterThanOrder;
+    public wishlist: Wishlist;
+    public default: Default;
 
-  public _defaultClient: AxiosInstance;
-  public _securityClient: AxiosInstance;
-  public _serverURL: string;
-  private _language = "typescript";
-  private _sdkVersion = "1.6.0";
-  private _genVersion = "2.32.2";
-  private _globals: any;
+    public _defaultClient: AxiosInstance;
+    public _securityClient: AxiosInstance;
+    public _serverURL: string;
+    private _language = "typescript";
+    private _sdkVersion = "1.6.1";
+    private _genVersion = "2.32.7";
+    private _globals: any;
 
-  constructor(props?: SDKProps) {
-    this._serverURL = props?.serverURL ?? ServerList[0];
+    constructor(props?: SDKProps) {
+        this._serverURL = props?.serverURL ?? ServerList[0];
 
-    this._defaultClient =
-      props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
-    this._securityClient = this._defaultClient;
+        this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
+        this._securityClient = this._defaultClient;
 
-    this.address = new Address(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.address = new Address(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.authentication = new Authentication(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.authentication = new Authentication(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.cart = new Cart(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.cart = new Cart(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.checkout = new Checkout(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.checkout = new Checkout(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.checkoutGreaterThanPayments = new CheckoutGreaterThanPayments(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.checkoutGreaterThanPayments = new CheckoutGreaterThanPayments(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.newsletterSubscription = new NewsletterSubscription(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.newsletterSubscription = new NewsletterSubscription(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.products = new Products(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.products = new Products(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.profileAccount = new ProfileAccount(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.profileAccount = new ProfileAccount(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.profileAccountGreaterThanOrder = new ProfileAccountGreaterThanOrder(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.profileAccountGreaterThanOrder = new ProfileAccountGreaterThanOrder(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.wishlist = new Wishlist(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.wishlist = new Wishlist(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.default = new Default(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
-  }
+        this.default = new Default(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
+    }
 }

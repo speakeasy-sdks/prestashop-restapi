@@ -6,46 +6,38 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class GetRestCategoryProductsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=id_category",
-  })
-  idCategory?: number;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=id_category" })
+    idCategory?: number;
 
-  /**
-   * if "with_all_images" is set to 0, images will be returned with this image size
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=image_size",
-  })
-  imageSize?: string;
+    /**
+     * if "with_all_images" is set to 0, images will be returned with this image size
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=image_size" })
+    imageSize?: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page" })
-  page?: number;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=page" })
+    page?: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=q" })
-  q?: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=q" })
+    q?: string;
 
-  /**
-   * If 0 it does not load different images for products. If 1 loads different images for products and leads to be lengthy json response.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=with_all_images",
-  })
-  withAllImages?: number;
+    /**
+     * If 0 it does not load different images for products. If 1 loads different images for products and leads to be lengthy json response.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=with_all_images" })
+    withAllImages?: number;
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=with_category_tree",
-  })
-  withCategoryTree?: boolean;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=with_category_tree" })
+    withCategoryTree?: boolean;
 }
 
 export class GetRestCategoryProductsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

@@ -10,348 +10,344 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  * REST endpoints related to products
  */
 export class Products {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-  }
-
-  /**
-   * Faceted Search
-   *
-   * @remarks
-   * Is used for product search
-   */
-  async getRestCategoryProducts(
-    req: operations.GetRestCategoryProductsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetRestCategoryProductsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetRestCategoryProductsRequest(req);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/rest/categoryProducts";
+    /**
+     * Faceted Search
+     *
+     * @remarks
+     * Is used for product search
+     */
+    async getRestCategoryProducts(
+        req: operations.GetRestCategoryProductsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetRestCategoryProductsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetRestCategoryProductsRequest(req);
+        }
 
-    const client: AxiosInstance = this._defaultClient;
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/rest/categoryProducts";
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const client: AxiosInstance = this._defaultClient;
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetRestCategoryProductsResponse =
+            new operations.GetRestCategoryProductsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
     }
 
-    const res: operations.GetRestCategoryProductsResponse =
-      new operations.GetRestCategoryProductsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        break;
+    /**
+     * Featured Products
+     *
+     * @remarks
+     * Gets featured products
+     */
+    async getRestFeaturedproducts(
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetRestFeaturedproductsResponse> {
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/rest/featuredproducts";
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetRestFeaturedproductsResponse =
+            new operations.GetRestFeaturedproductsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * List Comments
+     */
+    async getRestListcomments(
+        req: operations.GetRestListcommentsRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetRestListcommentsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetRestListcommentsRequest(req);
+        }
 
-  /**
-   * Featured Products
-   *
-   * @remarks
-   * Gets featured products
-   */
-  async getRestFeaturedproducts(
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetRestFeaturedproductsResponse> {
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/rest/featuredproducts";
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/rest/listcomments";
 
-    const client: AxiosInstance = this._defaultClient;
+        const client: AxiosInstance = this._defaultClient;
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetRestListcommentsResponse =
+            new operations.GetRestListcommentsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
     }
 
-    const res: operations.GetRestFeaturedproductsResponse =
-      new operations.GetRestFeaturedproductsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        break;
+    /**
+     * Product Search
+     *
+     * @remarks
+     * Is used for product search
+     */
+    async getRestProductSearch(
+        req: operations.GetRestProductSearchRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetRestProductSearchResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetRestProductSearchRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/rest/productSearch";
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetRestProductSearchResponse =
+            new operations.GetRestProductSearchResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * Product Detail
+     *
+     * @remarks
+     * Gets detail of a product. Including price, name, features and so on.
+     */
+    async getRestProductdetail(
+        req: operations.GetRestProductdetailRequest,
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetRestProductdetailResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.GetRestProductdetailRequest(req);
+        }
 
-  /**
-   * List Comments
-   */
-  async getRestListcomments(
-    req: operations.GetRestListcommentsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetRestListcommentsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetRestListcommentsRequest(req);
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/rest/productdetail";
+
+        const client: AxiosInstance = this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req);
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetRestProductdetailResponse =
+            new operations.GetRestProductdetailResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
     }
 
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/rest/listcomments";
+    /**
+     * Post Comment
+     */
+    async postRestPostcomment(
+        req: Record<string, any>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PostRestPostcommentResponse> {
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/rest/postcomment";
 
-    const client: AxiosInstance = this._defaultClient;
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const client: AxiosInstance = this._defaultClient;
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "*/*";
+        headers[
+            "user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PostRestPostcommentResponse =
+            new operations.PostRestPostcommentResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
     }
-
-    const res: operations.GetRestListcommentsResponse =
-      new operations.GetRestListcommentsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Product Search
-   *
-   * @remarks
-   * Is used for product search
-   */
-  async getRestProductSearch(
-    req: operations.GetRestProductSearchRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetRestProductSearchResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetRestProductSearchRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/rest/productSearch";
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetRestProductSearchResponse =
-      new operations.GetRestProductSearchResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Product Detail
-   *
-   * @remarks
-   * Gets detail of a product. Including price, name, features and so on.
-   */
-  async getRestProductdetail(
-    req: operations.GetRestProductdetailRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetRestProductdetailResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetRestProductdetailRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/rest/productdetail";
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req);
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetRestProductdetailResponse =
-      new operations.GetRestProductdetailResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * Post Comment
-   */
-  async postRestPostcomment(
-    req: Record<string, any>,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PostRestPostcommentResponse> {
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/rest/postcomment";
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "request",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    headers["Accept"] = "*/*";
-    headers[
-      "user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PostRestPostcommentResponse =
-      new operations.PostRestPostcommentResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        break;
-    }
-
-    return res;
-  }
 }

@@ -6,22 +6,20 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class GetRestLightbootstrapRequest extends SpeakeasyBase {
-  /**
-   * can contain "single" and "all"
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=menu_with_images",
-  })
-  menuWithImages?: string;
+    /**
+     * can contain "single" and "all"
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=menu_with_images" })
+    menuWithImages?: string;
 }
 
 export class GetRestLightbootstrapResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

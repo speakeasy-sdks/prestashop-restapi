@@ -6,25 +6,23 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
 export class GetRestProductSearchRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=resultsPerPage",
-  })
-  resultsPerPage?: number;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=resultsPerPage" })
+    resultsPerPage?: number;
 
-  /**
-   * This parameter is the word which should be searched
-   */
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=s" })
-  s?: string;
+    /**
+     * This parameter is the word which should be searched
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=s" })
+    s?: string;
 }
 
 export class GetRestProductSearchResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }
