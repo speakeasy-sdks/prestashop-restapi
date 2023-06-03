@@ -29,11 +29,31 @@ export type SDKProps = {
      * Allows overriding the default axios client used by the SDK
      */
     defaultClient?: AxiosInstance;
+
+    /**
+     * Allows overriding the default server used by the SDK
+     */
+    serverIdx?: number;
+
     /**
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
 };
+
+export class SDKConfiguration {
+    defaultClient: AxiosInstance;
+    securityClient: AxiosInstance;
+    serverURL: string;
+    serverDefaults: any;
+    language = "typescript";
+    sdkVersion = "1.8.0";
+    genVersion = "2.35.3";
+
+    public constructor(init?: Partial<SDKConfiguration>) {
+        Object.assign(this, init);
+    }
+}
 
 /**
  * # **Download Official Version**
@@ -66,117 +86,37 @@ export class Binshops {
     public wishlist: Wishlist;
     public default: Default;
 
-    public _defaultClient: AxiosInstance;
-    public _securityClient: AxiosInstance;
-    public _serverURL: string;
-    private _language = "typescript";
-    private _sdkVersion = "1.7.1";
-    private _genVersion = "2.34.7";
-    private _globals: any;
+    private sdkConfiguration: SDKConfiguration;
 
     constructor(props?: SDKProps) {
-        this._serverURL = props?.serverURL ?? ServerList[0];
+        let serverURL = props?.serverURL;
+        const serverIdx = props?.serverIdx ?? 0;
 
-        this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
-        this._securityClient = this._defaultClient;
+        if (!serverURL) {
+            serverURL = ServerList[serverIdx];
+        }
 
-        this.address = new Address(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
+        const securityClient = defaultClient;
 
-        this.authentication = new Authentication(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        this.sdkConfiguration = new SDKConfiguration({
+            defaultClient: defaultClient,
+            securityClient: securityClient,
+            serverURL: serverURL,
+        });
 
-        this.cart = new Cart(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.checkout = new Checkout(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.checkoutGreaterThanPayments = new CheckoutGreaterThanPayments(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.newsletterSubscription = new NewsletterSubscription(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.products = new Products(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.profileAccount = new ProfileAccount(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
+        this.address = new Address(this.sdkConfiguration);
+        this.authentication = new Authentication(this.sdkConfiguration);
+        this.cart = new Cart(this.sdkConfiguration);
+        this.checkout = new Checkout(this.sdkConfiguration);
+        this.checkoutGreaterThanPayments = new CheckoutGreaterThanPayments(this.sdkConfiguration);
+        this.newsletterSubscription = new NewsletterSubscription(this.sdkConfiguration);
+        this.products = new Products(this.sdkConfiguration);
+        this.profileAccount = new ProfileAccount(this.sdkConfiguration);
         this.profileAccountGreaterThanOrder = new ProfileAccountGreaterThanOrder(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
+            this.sdkConfiguration
         );
-
-        this.wishlist = new Wishlist(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
-
-        this.default = new Default(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion
-        );
+        this.wishlist = new Wishlist(this.sdkConfiguration);
+        this.default = new Default(this.sdkConfiguration);
     }
 }

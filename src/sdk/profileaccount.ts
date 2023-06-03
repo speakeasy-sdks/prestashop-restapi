@@ -4,33 +4,17 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
  * REST endpoints related to user profile section
  */
 export class ProfileAccount {
-    _defaultClient: AxiosInstance;
-    _securityClient: AxiosInstance;
-    _serverURL: string;
-    _language: string;
-    _sdkVersion: string;
-    _genVersion: string;
+    private sdkConfiguration: SDKConfiguration;
 
-    constructor(
-        defaultClient: AxiosInstance,
-        securityClient: AxiosInstance,
-        serverURL: string,
-        language: string,
-        sdkVersion: string,
-        genVersion: string
-    ) {
-        this._defaultClient = defaultClient;
-        this._securityClient = securityClient;
-        this._serverURL = serverURL;
-        this._language = language;
-        this._sdkVersion = sdkVersion;
-        this._genVersion = genVersion;
+    constructor(sdkConfig: SDKConfiguration) {
+        this.sdkConfiguration = sdkConfig;
     }
 
     /**
@@ -42,16 +26,19 @@ export class ProfileAccount {
     async getRestAccountInfo(
         config?: AxiosRequestConfig
     ): Promise<operations.GetRestAccountInfoResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/rest/accountInfo";
 
-        const client: AxiosInstance = this._defaultClient;
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -88,7 +75,10 @@ export class ProfileAccount {
         req: Record<string, any>,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestAccounteditResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/rest/accountedit";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -101,13 +91,13 @@ export class ProfileAccount {
             }
         }
 
-        const client: AxiosInstance = this._defaultClient;
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -145,7 +135,10 @@ export class ProfileAccount {
         req: Record<string, any>,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestResetpasswordbyemailResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/rest/resetpasswordbyemail";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -158,13 +151,13 @@ export class ProfileAccount {
             }
         }
 
-        const client: AxiosInstance = this._defaultClient;
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -202,7 +195,10 @@ export class ProfileAccount {
         req: Record<string, any>,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestResetpasswordcheckResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/rest/resetpasswordcheck";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -215,13 +211,13 @@ export class ProfileAccount {
             }
         }
 
-        const client: AxiosInstance = this._defaultClient;
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -259,7 +255,10 @@ export class ProfileAccount {
         req: Record<string, any>,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestResetpasswordemailResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/rest/resetpasswordemail";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -272,13 +271,13 @@ export class ProfileAccount {
             }
         }
 
-        const client: AxiosInstance = this._defaultClient;
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -316,7 +315,10 @@ export class ProfileAccount {
         req: Record<string, any>,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestResetpasswordenterResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/rest/resetpasswordenter";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -329,13 +331,13 @@ export class ProfileAccount {
             }
         }
 
-        const client: AxiosInstance = this._defaultClient;
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

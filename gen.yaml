@@ -2,14 +2,14 @@ configVersion: 1.0.0
 management:
   docChecksum: 63f577c042abca90d6ed263f39ef4e5e
   docVersion: 1.0.0
-  speakeasyVersion: 1.40.3
-  generationVersion: 2.34.7
+  speakeasyVersion: 1.43.0
+  generationVersion: 2.35.3
 generation:
   sdkClassName: Binshops
   singleTagPerOp: false
   telemetryEnabled: false
 typescript:
-  version: 1.7.1
+  version: 1.8.0
   author: performingdigital
   maxMethodParams: 0
   packageName: prestashop-restapi
