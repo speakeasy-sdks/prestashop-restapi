@@ -2,7 +2,7 @@
 
 ## Overview
 
-# **Download Official Version**
+PrestaShop REST API: # **Download Official Version**
 
 ## **Official version and Full PDF documentation of endpoints, explanation of business logics and full Postman doc is available on official module:**
 
