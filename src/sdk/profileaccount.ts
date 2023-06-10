@@ -72,9 +72,13 @@ export class ProfileAccount {
      * New Password
      */
     async postRestAccountedit(
-        req: Record<string, any>,
+        req: operations.PostRestAccounteditRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestAccounteditResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestAccounteditRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -132,9 +136,13 @@ export class ProfileAccount {
      * Reset Pass By Email
      */
     async postRestResetpasswordbyemail(
-        req: Record<string, any>,
+        req: operations.PostRestResetpasswordbyemailRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestResetpasswordbyemailResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestResetpasswordbyemailRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -192,9 +200,13 @@ export class ProfileAccount {
      * 2- Check Reset Pass Code
      */
     async postRestResetpasswordcheck(
-        req: Record<string, any>,
+        req: operations.PostRestResetpasswordcheckRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestResetpasswordcheckResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestResetpasswordcheckRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -252,9 +264,13 @@ export class ProfileAccount {
      * 1- Send Reset Password Code
      */
     async postRestResetpasswordemail(
-        req: Record<string, any>,
+        req: operations.PostRestResetpasswordemailRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestResetpasswordemailResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestResetpasswordemailRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -312,9 +328,13 @@ export class ProfileAccount {
      * 3- Reset Password
      */
     async postRestResetpasswordenter(
-        req: Record<string, any>,
+        req: operations.PostRestResetpasswordenterRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestResetpasswordenterResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestResetpasswordenterRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults

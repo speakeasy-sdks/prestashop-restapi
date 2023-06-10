@@ -36,72 +36,72 @@ sdk.address.deleteRestAddress().then((res: DeleteRestAddressResponse) => {
 ## Available Resources and Operations
 
 
-### [address](docs/address/README.md)
+### [address](docs/sdks/address/README.md)
 
-* [deleteRestAddress](docs/address/README.md#deleterestaddress) - Delete Address
-* [getRestAddress](docs/address/README.md#getrestaddress) - Get Address
-* [getRestAddressform](docs/address/README.md#getrestaddressform) - List avaibale countries and states
-* [getRestAlladdresses](docs/address/README.md#getrestalladdresses) - All Addresses
-* [postRestAddress](docs/address/README.md#postrestaddress) - Update Address
+* [deleteRestAddress](docs/sdks/address/README.md#deleterestaddress) - Delete Address
+* [getRestAddress](docs/sdks/address/README.md#getrestaddress) - Get Address
+* [getRestAddressform](docs/sdks/address/README.md#getrestaddressform) - List avaibale countries and states
+* [getRestAlladdresses](docs/sdks/address/README.md#getrestalladdresses) - All Addresses
+* [postRestAddress](docs/sdks/address/README.md#postrestaddress) - Update Address
 
-### [authentication](docs/authentication/README.md)
+### [authentication](docs/sdks/authentication/README.md)
 
-* [getRestLogout](docs/authentication/README.md#getrestlogout) - Logout
-* [postRestLogin](docs/authentication/README.md#postrestlogin) - Login
-* [postRestRegister](docs/authentication/README.md#postrestregister) - Register
+* [getRestLogout](docs/sdks/authentication/README.md#getrestlogout) - Logout
+* [postRestLogin](docs/sdks/authentication/README.md#postrestlogin) - Login
+* [postRestRegister](docs/sdks/authentication/README.md#postrestregister) - Register
 
-### [cart](docs/cart/README.md)
+### [cart](docs/sdks/cart/README.md)
 
-* [getRestCart](docs/cart/README.md#getrestcart) - Remove a specific product from cart
+* [getRestCart](docs/sdks/cart/README.md#getrestcart) - Remove a specific product from cart
 
-### [checkout](docs/checkout/README.md)
+### [checkout](docs/sdks/checkout/README.md)
 
-* [getRestCarriers](docs/checkout/README.md#getrestcarriers) - 2- All Carriers
-* [getRestPaymentoptions](docs/checkout/README.md#getrestpaymentoptions) - 4- Payment Options
-* [postRestSetaddresscheckout](docs/checkout/README.md#postrestsetaddresscheckout) - 1- Set Address
-* [postRestSetcarriercheckout](docs/checkout/README.md#postrestsetcarriercheckout) - 3- Set Carrier
+* [getRestCarriers](docs/sdks/checkout/README.md#getrestcarriers) - 2- All Carriers
+* [getRestPaymentoptions](docs/sdks/checkout/README.md#getrestpaymentoptions) - 4- Payment Options
+* [postRestSetaddresscheckout](docs/sdks/checkout/README.md#postrestsetaddresscheckout) - 1- Set Address
+* [postRestSetcarriercheckout](docs/sdks/checkout/README.md#postrestsetcarriercheckout) - 3- Set Carrier
 
-### [checkoutGreaterThanPayments](docs/checkoutgreaterthanpayments/README.md)
+### [checkoutGreaterThanPayments](docs/sdks/checkoutgreaterthanpayments/README.md)
 
-* [getRestPsCashondelivery](docs/checkoutgreaterthanpayments/README.md#getrestpscashondelivery) - Cash on Delivery
-* [getRestPsCheckpayment](docs/checkoutgreaterthanpayments/README.md#getrestpscheckpayment) - Check Payment
-* [getRestPsWirepayment](docs/checkoutgreaterthanpayments/README.md#getrestpswirepayment) - Wire Payment
+* [getRestPsCashondelivery](docs/sdks/checkoutgreaterthanpayments/README.md#getrestpscashondelivery) - Cash on Delivery
+* [getRestPsCheckpayment](docs/sdks/checkoutgreaterthanpayments/README.md#getrestpscheckpayment) - Check Payment
+* [getRestPsWirepayment](docs/sdks/checkoutgreaterthanpayments/README.md#getrestpswirepayment) - Wire Payment
 
-### [newsletterSubscription](docs/newslettersubscription/README.md)
+### [newsletterSubscription](docs/sdks/newslettersubscription/README.md)
 
-* [getRestEmailsubscription](docs/newslettersubscription/README.md#getrestemailsubscription) - Get Conditions
-* [postRestEmailsubscription](docs/newslettersubscription/README.md#postrestemailsubscription) - Email Subscription
+* [getRestEmailsubscription](docs/sdks/newslettersubscription/README.md#getrestemailsubscription) - Get Conditions
+* [postRestEmailsubscription](docs/sdks/newslettersubscription/README.md#postrestemailsubscription) - Email Subscription
 
-### [products](docs/products/README.md)
+### [products](docs/sdks/products/README.md)
 
-* [getRestCategoryProducts](docs/products/README.md#getrestcategoryproducts) - Faceted Search
-* [getRestFeaturedproducts](docs/products/README.md#getrestfeaturedproducts) - Featured Products
-* [getRestListcomments](docs/products/README.md#getrestlistcomments) - List Comments
-* [getRestProductSearch](docs/products/README.md#getrestproductsearch) - Product Search
-* [getRestProductdetail](docs/products/README.md#getrestproductdetail) - Product Detail
-* [postRestPostcomment](docs/products/README.md#postrestpostcomment) - Post Comment
+* [getRestCategoryProducts](docs/sdks/products/README.md#getrestcategoryproducts) - Faceted Search
+* [getRestFeaturedproducts](docs/sdks/products/README.md#getrestfeaturedproducts) - Featured Products
+* [getRestListcomments](docs/sdks/products/README.md#getrestlistcomments) - List Comments
+* [getRestProductSearch](docs/sdks/products/README.md#getrestproductsearch) - Product Search
+* [getRestProductdetail](docs/sdks/products/README.md#getrestproductdetail) - Product Detail
+* [postRestPostcomment](docs/sdks/products/README.md#postrestpostcomment) - Post Comment
 
-### [profileAccount](docs/profileaccount/README.md)
+### [profileAccount](docs/sdks/profileaccount/README.md)
 
-* [getRestAccountInfo](docs/profileaccount/README.md#getrestaccountinfo) - Account Info
-* [postRestAccountedit](docs/profileaccount/README.md#postrestaccountedit) - New Password
-* [postRestResetpasswordbyemail](docs/profileaccount/README.md#postrestresetpasswordbyemail) - Reset Pass By Email
-* [postRestResetpasswordcheck](docs/profileaccount/README.md#postrestresetpasswordcheck) - 2- Check Reset Pass Code
-* [postRestResetpasswordemail](docs/profileaccount/README.md#postrestresetpasswordemail) - 1- Send Reset Password Code
-* [postRestResetpasswordenter](docs/profileaccount/README.md#postrestresetpasswordenter) - 3- Reset Password
+* [getRestAccountInfo](docs/sdks/profileaccount/README.md#getrestaccountinfo) - Account Info
+* [postRestAccountedit](docs/sdks/profileaccount/README.md#postrestaccountedit) - New Password
+* [postRestResetpasswordbyemail](docs/sdks/profileaccount/README.md#postrestresetpasswordbyemail) - Reset Pass By Email
+* [postRestResetpasswordcheck](docs/sdks/profileaccount/README.md#postrestresetpasswordcheck) - 2- Check Reset Pass Code
+* [postRestResetpasswordemail](docs/sdks/profileaccount/README.md#postrestresetpasswordemail) - 1- Send Reset Password Code
+* [postRestResetpasswordenter](docs/sdks/profileaccount/README.md#postrestresetpasswordenter) - 3- Reset Password
 
-### [profileAccountGreaterThanOrder](docs/profileaccountgreaterthanorder/README.md)
+### [profileAccountGreaterThanOrder](docs/sdks/profileaccountgreaterthanorder/README.md)
 
-* [getRestOrderhistory](docs/profileaccountgreaterthanorder/README.md#getrestorderhistory) - Order Details
+* [getRestOrderhistory](docs/sdks/profileaccountgreaterthanorder/README.md#getrestorderhistory) - Order Details
 
-### [wishlist](docs/wishlist/README.md)
+### [wishlist](docs/sdks/wishlist/README.md)
 
-* [getRestWishlist](docs/wishlist/README.md#getrestwishlist) - Rename Wishlist
+* [getRestWishlist](docs/sdks/wishlist/README.md#getrestwishlist) - Rename Wishlist
 
-### [default](docs/default/README.md)
+### [default](docs/sdks/default/README.md)
 
-* [getRestBootstrap](docs/default/README.md#getrestbootstrap) - Bootstrap
-* [getRestLightbootstrap](docs/default/README.md#getrestlightbootstrap) - Light Bootstrap
+* [getRestBootstrap](docs/sdks/default/README.md#getrestbootstrap) - Bootstrap
+* [getRestLightbootstrap](docs/sdks/default/README.md#getrestlightbootstrap) - Light Bootstrap
 <!-- End SDK Available Operations -->
 
 ### Maturity

@@ -113,9 +113,13 @@ export class Checkout {
      * 1- Set Address
      */
     async postRestSetaddresscheckout(
-        req: Record<string, any>,
+        req: operations.PostRestSetaddresscheckoutRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestSetaddresscheckoutResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestSetaddresscheckoutRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -173,9 +177,13 @@ export class Checkout {
      * 3- Set Carrier
      */
     async postRestSetcarriercheckout(
-        req: Record<string, any>,
+        req: operations.PostRestSetcarriercheckoutRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestSetcarriercheckoutResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestSetcarriercheckoutRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults

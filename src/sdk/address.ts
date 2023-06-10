@@ -220,9 +220,13 @@ export class Address {
      * If the address ID is not passed, it creates new address
      */
     async postRestAddress(
-        req: Record<string, any>,
+        req: operations.PostRestAddressRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestAddressResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestAddressRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults

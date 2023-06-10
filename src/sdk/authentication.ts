@@ -69,9 +69,13 @@ export class Authentication {
      * This API logins to prestashop
      */
     async postRestLogin(
-        req: Record<string, any>,
+        req: operations.PostRestLoginRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestLoginResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestLoginRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -128,9 +132,13 @@ export class Authentication {
      * Register
      */
     async postRestRegister(
-        req: Record<string, any>,
+        req: operations.PostRestRegisterRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestRegisterResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestRegisterRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults

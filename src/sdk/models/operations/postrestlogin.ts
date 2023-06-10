@@ -5,6 +5,8 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 
+export class PostRestLoginRequestBody extends SpeakeasyBase {}
+
 export class PostRestLoginResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;

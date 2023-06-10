@@ -297,9 +297,13 @@ export class Products {
      * Post Comment
      */
     async postRestPostcomment(
-        req: Record<string, any>,
+        req: operations.PostRestPostcommentRequestBody,
         config?: AxiosRequestConfig
     ): Promise<operations.PostRestPostcommentResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.PostRestPostcommentRequestBody(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
