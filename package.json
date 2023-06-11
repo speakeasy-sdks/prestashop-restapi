@@ -1,6 +1,6 @@
 {
   "name": "prestashop-restapi",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "author": "performingdigital",
   "scripts": {
     "prepare": "tsc --build"
